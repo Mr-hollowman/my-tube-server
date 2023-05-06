@@ -4,7 +4,6 @@ import bcrypt from 'bcryptjs';
 import { createError } from "../error.js";
 import jwt from "jsonwebtoken";
 export const signup = async (req, res, next)=>{
-    console.log(req.body);
     try{
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
