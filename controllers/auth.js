@@ -17,7 +17,6 @@ export const signup = async (req, res, next)=>{
 }
 
 export const signin = async (req, res, next)=>{
-    console.log(req.body);
     try{
         const user = await User.findOne({name:req.body.name});
         if(!user) return next(createError(404,"User not found!"));
@@ -30,7 +29,7 @@ export const signin = async (req, res, next)=>{
         const {password, ...others} = user._doc;
 
         res.cookie("access_token",token,{
-            httpOnly: true
+            // httpOnly: true
         }).status(200).json(others);
     }catch(err){
         next(err)
