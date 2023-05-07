@@ -12,6 +12,6 @@ router.get("/find/:id", getVideo)
 router.put('/view/:id', addView)
 router.get('/trend', trendVideos)
 router.get('/random', randomVideo)
-router.get('/sub', sub )
+router.get('/sub', verifyToken, sub )
 
 export default router;
