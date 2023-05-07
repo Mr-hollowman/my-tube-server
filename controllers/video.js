@@ -73,3 +73,12 @@ export const randomVideo = async (req, res, next) => {
         next(error)
     }
 }
+
+export const trendVideos = async (req, res, next) => {
+    try {
+        const videos = await Video.find().sort({ views: -1 })
+        res.status(200).json(videos)
+    } catch (error) {
+        next(error)
+    }
+}
