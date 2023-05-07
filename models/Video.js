@@ -12,4 +12,4 @@ const VideoSchema = new mongoose.Schema({
     dislikes:{type: [String], default:[]},
 },{timestamps: true})
 
-export default mongoose.model("video", VideoSchema)
+export default mongoose.model("Video", VideoSchema)
