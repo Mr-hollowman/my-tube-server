@@ -84,3 +84,18 @@ export const like = async (req, res, next) => {
     next(error);
   }
 };
+
+export const dislike = async (req, res, next) => {
+    const id = req.user.id;
+    const videoId = req.params.videoId;
+    try {
+      await Video.findByIdAndUpdate(videoId, {
+        $addToSet: { dislikes: id },
+        $pull: { likes: id },
+      });
+      res.status(200).json("The video has been liked.");
+    } catch (error) {
+      next(error);
+    }
+  };
+  
