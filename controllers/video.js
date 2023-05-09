@@ -102,7 +102,6 @@ export const sub = async (req, res, next) => {
 
 export const getByTags = async (req, res, next) => {
     const tag = req.query.tags.split(',')
-    console.log(tag, "tag")
     try {
         const videos = await Video.find({ tags: { $in: tag } }).limit(20)
         res.status(200).json(videos)
